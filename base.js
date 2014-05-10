@@ -20,7 +20,23 @@ function getStyle(obj,styleName)
 		 return getComputedStyle(obj,null)[styleName];
 	}
 }
-
+//返回DOM元素在页面中的绝对位置
+function getPosition(obj)
+{
+	var pos={x:0,y:0};
+	while(obj.parentNode&&obj.tagName!='HTML')
+	{
+		if(!obj.currentStyle&&obj.parentNode.tagName!='HTML')
+		{
+		  pos.x+=parseInt(getComputedStyle(obj.parentNode,null)['borderLeftWidth']);
+		  pos.y+=parseInt(getComputedStyle(obj.parentNode,null)['borderTopWidth']);	
+		}
+		pos.x+=obj.offsetLeft;
+		pos.y+=obj.offsetTop;
+		obj=obj.parentNode;
+	}
+	return pos;
+}
 //*********Ajax********************
 //创建xhr对象
 function createXHR()
