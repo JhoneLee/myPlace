@@ -1,4 +1,0 @@
-myPlace
-=======
-
-my zone
