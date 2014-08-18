@@ -252,17 +252,17 @@
               });
               $('.searchtext').focus();
               for (var i = 0; i < $('#block2 img').length; i++) {
-                  $('#block2 img').eq(i).attr('src', 'images/animal/seezoo' + i + '.jpg');
+                  $('#block2 img').eq(i).attr('src', 'images/seezoo' + i + '.jpg');
               }
               setInterval(function () {
                   var index = Math.floor(Math.random() * 9);
                   $('#block2 img').eq(index).animate({ width: '0' }, 2000, function () {
                       var obj = $('#block2 img').eq(index);
-                      if (obj.attr('src') == 'images/animal/seezoo' + index + '.jpg') {
-                          obj.attr('src', 'images/animal/seezoo' + index + '_1.jpg').animate({ width: '100%' }, 2000);
+                      if (obj.attr('src') == 'images/seezoo' + index + '.jpg') {
+                          obj.attr('src', 'images/seezoo' + index + '_1.jpg').animate({ width: '100%' }, 2000);
                       }
                       else {
-                          obj.attr('src', 'images/animal/seezoo' + index + '.jpg').animate({ width: '100%' }, 2000);
+                          obj.attr('src', 'images/seezoo' + index + '.jpg').animate({ width: '100%' }, 2000);
                       }
 
                   });
