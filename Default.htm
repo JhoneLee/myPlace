@@ -269,11 +269,11 @@
               }, 4000);
               if (Brows.opera || document.getElementById('place').style['backgroundSize'] == undefined) {
                   //如果是欧朋或低版本浏览器，运行幻灯片特效
-                  var jsonUl = { width: 710 + 'px', height: 7 * 390 + 'px', position: 'absolute' };
+                  var jsonUl = { width: 710 + 'px', height: 6 * 390 + 'px', position: 'absolute' };
                   var jsonLi = { listStyle: 'none', float: 'left', width: '710px', height: '390px' };
                   var jsonA = { display: 'block', width: '100%', height: '100%' };
                   document.getElementById('flex_place').style['overflow'] = 'hidden';
-                  createSlideFrame(document.getElementById('flex_place'), 7, jsonUl, jsonLi, jsonA);
+                  createSlideFrame(document.getElementById('flex_place'), 6, jsonUl, jsonLi, jsonA);
               }
               else {
                   var oDivFlex = document.getElementById('flex');
@@ -284,11 +284,11 @@
           }
           init();
           function ulmove() {
-              if ($('#flex_place ul').css('top') == '-2340px') {
+              if ($('#flex_place ul').css('top') == '-1950px') {
                   $('#flex_place ul').css({ 'top': '0' });
               }
               $('#flex_place ul').animate({ top: '-=390px' }, 2000, function () {
-                  if ($('#flex_place ul').css('top') == '-2340px') {
+                  if ($('#flex_place ul').css('top') == '-1950px') {
                       $('#flex_place ul').css({ 'top': '0' });
                   }
               });
@@ -344,7 +344,7 @@
                       timer = setInterval(function () { ulmove(); }, 2100);
                   };
                   $('#next').click(function () {
-                      if ($('#flex_place ul').css('top') == '-2340px') {
+                      if ($('#flex_place ul').css('top') == '-1950px') {
                           $('#flex_place ul').css({ 'top': '-390px' });
                       }
                       else {
@@ -353,7 +353,7 @@
                   });
                   $('#last').click(function () {
                       if ($('#flex_place ul').css('top') == '0px') {
-                          $('#flex_place ul').css({ 'top': '-1950px' });
+                          $('#flex_place ul').css({ 'top': '-1560px' });
                       }
                       else {
                           $('#flex_place ul').css({ 'top': '+=390px' });
@@ -379,7 +379,7 @@
                   obj.removeChild(oA);
                   setTimeout(function () {
                       obj.removeChild(oDivS);
-                      if (imgIndex == 6) { imgIndex = 0; }
+                      if (imgIndex == 5) { imgIndex = 0; }
                       createFlexFrame(obj, jsonF, jsonS, jsonIA, 'images/wildzoo' + imgIndex + '.jpg');
                       imgIndex++;
                   }, 1000)
@@ -401,10 +401,10 @@
                 for (var item in jsonLi) {
                     oLi.style[item] = jsonLi[item];
                 }
-                if (i == 6) {
+                if (i == liNum-1) {
                     i = 0;
                     oLi.style['background'] = "url('images/wildzoo" + i + ".jpg')";
-                    i = 6;
+                    i = liNum-1;
                 }
                 else {
                     oLi.style['background'] = "url('images/wildzoo" + i + ".jpg')";
