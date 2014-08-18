@@ -1,0 +1,479 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <link href="css/atomic.css" rel="Stylesheet"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style type="text/css" media="screen">
+    html{ height:100%;}
+    body{ height:100%; width:100%; background:#1C86EE;}
+    *{ font:微软雅黑;}
+    .main{ height:500px; width:4200px;}
+    .glass{ filter:alpha(opacity=50); height:500px;position:absolute; background:White; opacity:0.5; }
+    .divBtn{ height:50px; width:50px; background-image: url('images/forward.png'); background-position:0 -50px; background-repeat:no-repeat;}
+    .divCont{ height:480px; width:800px;}
+    .search{ width:300px; height:50px; top:50px; left:50px;}
+    .searchtext{ width:250px; height:50px; font-size:36px; line-height:50px;}
+    .searchbtn{ width:50px; height:50px; top:0; left:250px; background-image:url('images/forward.png'); background-position:-50px 0;}
+    .quteCube{ width:40px; height:40px;}
+    .qutoText{ width:150px; height:100px;}
+    .Cube80{width:80px; height:80px; }
+    .margin4{ margin:4px;}
+    .width195{ width:195px;}
+    .height115{ height:115px;}
+    .width390{ width:390px;}
+    .height230{ height:230px;}
+    .marginTop20{ margin-top:20px;}
+    .liststylenone{ list-style:none;}
+    .marginleft10{ margin-left:10px;}
+    .blocka{ display:block; outline:none; text-decoration:none;}
+    
+    #block1{ background-image:url('images/pearl.jpg');}
+	#block1>div>p{line-height:33px; font-size:12px; color:white;}
+    #block2 div{position:absolute;}
+    #block2 div a{ display:block; width:100%; height:100%; text-decoration:none; outline:none;}
+    #block2 div img{ border:none;}
+    .ln_btn{ top:155px;cursor:pointer; z-index:1; text-align:center; width:0; height:80px;}
+     #next{ right:100px;}
+     #last{ left:100px;}
+     #flex{position:absolute;}
+     #flex div
+     {
+     	left:0;
+     	top:0;
+     	transition:width 1s, height 1s,top 1s,left 1s;
+        -webkit-transition:width 1s, height 1s, margin 1s,top 1s,left 1s;
+     }
+     #flex div div 
+     {
+        float:left;
+        transition:transform 1s,width 1s,height 1s,opacity 1s,background-size 1s,background-position 1s,-webkit-transform 1s;
+        -webkit-transition:-webkit-transform 1s,width 1s,height 1s,opacity 1s,background-size 1s,background-position 1s;
+     }
+    </style>
+    <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="js/jquery.mousewheel.js"></script>
+    <script type="text/javascript" src="js/base.js"></script>
+    <script type="text/javascript" src="js/common.js"></script>
+</head>
+<body>
+    <div class="glass"></div>
+    <div id="place" class="absolute main">
+    
+    <!--第一版面-->
+     <div id="block1" class="divCont marginTop10 floatleft">
+        <div class="absolute black border1SW quteCube opacity0 z-index1" style=" left:50px;top:150px;"></div>
+        <div class=" absolute black border1SW qutoText opacity0" style=" left:95px;top:150px;">
+		 <p>看这些从水底下冒出的气泡，是不是像一颗颗珍珠一样从水里蹦出来</p>
+		</div>
+        <div class="absolute black border1SW quteCube opacity0 z-index1" style=" left:240px;top:310px;"></div>
+        <div class=" absolute black border1SW qutoText opacity0" style=" left:285px;top:310px;">
+		 <p>有人研究过，这是地下水从地底流出的时候经过岩层中的气体层所致</p>
+		</div>
+        <div class="absolute black border1SW quteCube opacity0 z-index1" style=" left:390px;top:200px;"></div>
+        <div class=" absolute black border1SW qutoText opacity0" style=" left:435px;top:200px;">
+		<p>这种现象叫做珍珠泉，其中最负盛名的是南京珍珠泉，但这里可不是南京的珍珠泉</p></div>
+        <div class="absolute black border1SW quteCube opacity0 z-index1" style=" left:550px;top:80px;"></div>
+        <div class=" absolute black border1SW qutoText opacity0 " style=" left:595px;top:80px;">
+		 <p>其实你在北京就可以看到这种奇景，它就在永红珍珠苑不远的地方</p>
+		</div>
+        <div id="moveBlock" class=" absolute autowh autolt marginTop10 divCont"></div>
+       
+       <form method="get" action="http://www.baidu.com/baidu" target="_blank" class="absolute white search">
+        <div>
+            <input type="text" value="珍珠泉" name="word" size="30" maxlength="30" class="autolt font_family fontgray searchtext border0"/>
+            <input type="submit" value="" class="absolute searchbtn white border0" id="submitBtn"/>
+        </div>
+      </form>
+     </div>
+    <!--第二版面-->
+     <div class="divBtn marginTop10 floatleft mousehand"></div>
+     <div id="block2" class="divCont marginTop10 floatleft relative">
+       <div style=" left:0; top:0;" class=" height230 width195">
+        <a href="#">
+         <table align='center' class="height230 width195" style="table-layout:fixed;">
+          <th class="height230 width195">
+           <img class="height230 width195"/>
+          </th>
+         </table>
+        </a>
+       </div>
+       <div style=" left:0px; top:240px;" class=" height115 width195">
+        <a href="#">
+         <table align='center' class=" height115 width195" style="table-layout:fixed;">
+          <th class=" height115 width195">
+           <img class=" height115 width195"/>
+          </th>
+         </table>
+        </a>
+       </div>
+       <div style=" left:0px; top:365px;" class=" height115 width390">
+        <a href="#">
+         <table align='center' class=" height115 width390" style="table-layout:fixed;">
+          <th class=" height115 width390">
+           <img class=" height115 width390"/>
+          </th>
+         </table>
+        </a>
+       </div>
+       <div style=" left:205px; top:0px;" class=" height115 width195">
+        <a href="#">
+         <table align='center' class=" height115 width195" style="table-layout:fixed;">
+          <th class=" height115 width195">
+           <img class=" height115 width195"/>
+          </th>
+         </table>
+        </a>
+       </div>
+       <div style=" left:205px; top:125px;" class=" height230 width390">
+        <a href="#">
+         <table align='center' class=" height230 width390" style="table-layout:fixed;">
+          <th class=" height230 width390">
+           <img class=" height230 width390"/>
+          </th>
+         </table>
+        </a>
+       </div>
+       <div style=" left:410px; top:0" class=" width390 height115">
+        <a href="#">
+         <table align='center' class=" width390 height115" style="table-layout:fixed;">
+          <th class=" width390 height115">
+           <img class=" width390 height115"/>
+          </th>
+         </table>
+        </a>
+       </div>
+       <div style=" left:400px; top:365px" class=" width195 height115">
+        <a href="#">
+         <table align='center' class=" width195 height115" style="table-layout:fixed;">
+          <th class=" width195 height115">
+           <img class=" width195 height115"/>
+          </th>
+         </table>
+        </a>
+       </div>
+       <div style=" left:605px; top:250px" class=" width195 height230">
+        <a href="#">
+         <table align='center' class=" width195 height230" style="table-layout:fixed;">
+          <th class=" width195 height230">
+           <img class=" width195 height230"/>
+          </th>
+         </table>
+        </a>
+       </div>
+       <div style=" left:605px; top:125px;" class=" width195 height115">
+        <a href="#">
+         <table align='center' class=" width195 height115" style="table-layout:fixed;">
+          <th class=" width195 height115">
+           <img class=" width195 height115"/>
+          </th>
+         </table>
+        </a>
+       </div>
+     </div>
+     <div class="divBtn marginTop10 floatleft mousehand"></div>
+    <!--第三版面-->
+     <div class="divCont marginTop10 floatleft">
+       <div id='flex_place' class="relative" style=" width:710px; height:390px;margin:0px auto;">
+        <div id="flex"></div>
+        <div id="last" class="absolute ln_btn opacity50 black">
+         <img src="images/Left.png" class="autowh" />
+        </div>
+        <div id="next" class="absolute ln_btn Cube80 opacity50 black">
+         <img src="images/Right.png" class="autowh"/>
+        </div>
+       </div>
+      </div>
+
+     <div class="divBtn marginTop10 floatleft mousehand"></div>
+     <div class="divCont blue marginTop10 floatleft"></div>
+     <div class="divBtn marginTop10 floatleft mousehand"></div>
+     <div class="divCont blue marginTop10 floatleft"></div>
+    </div>
+    
+    <div id="script">
+      <script type="text/javascript">
+          var Brows = UserAgent();
+          var srcWidth = window.screen.width;
+          var srcHeight = window.screen.height;
+          var Timer = 0;
+          var imgIndex = 1;
+          var arr = new Array(2.1, 0.9, 0.2, -1.2, -1.8);
+          var arr2 = new Array(-1, -1, 1);
+          var jsonF = { width: '710px', height: '390px', position: 'absolute' };
+          var jsonS = { width: '142px', height: '130px' };
+          var jsonIA={display:'block',width:'100%',height:'100%',position:'absolute'};
+          function init() {
+              $('body').css({ 'overflow-x': 'hidden' });
+              $('body').width(srcWidth + 3400);
+              $('.glass').css({ 'top': ($(document).height() - 500) / 2 + 'px', 'width': window.screen.width + 'px' });
+              $('#place').css({ 'left': (srcWidth - 800) / 2 + 'px', 'top': ($(document).height() - 500) / 2 + 'px' });
+              $('.divBtn.marginTop10').each(function () {
+                  $(this).attr('clidked', false);
+                  $(this).click(function () {
+                      if ($(this).offset().left != (srcWidth - 800) / 2 - 50) {
+                          $('#place').animate({ left: '-=850px' }, 1000);
+                          $(this).css({ 'background-position': '0 0' });
+                      }
+                      else {
+                          $('#place').animate({ left: '+=850px' }, 1000);
+                          $(this).css({ 'background-position': '0 -50px' });
+                      }
+                      
+                  })
+              });
+              var flag = true;
+              $(document).mousewheel(function (event, delta) {
+
+                  if (flag && delta > 0 && $('.divBtn.marginTop10').eq(3).offset().left != (srcWidth - 800) / 2 - 50) {
+                      flag = false;
+                      $('#place').animate({ left: '-=850px' }, 1000, function () {
+                          var i = ($('#place').offset().left - 440) / -850;
+                          $('.divBtn.marginTop10').eq(i - 1).css({ 'background-position': '0 0' });
+                          if (i < 4) {
+                              $('.divBtn.marginTop10').eq(i).css({ 'background-position': '0 -50px' });
+                          }
+                          flag = true;
+                      });
+
+                  }
+                  else if (delta < 0 && flag && $('.divBtn').eq(0).offset().left != (srcWidth - 800) / 2 + 800) {
+                      flag = false;
+                      $('#place').animate({ left: '+=850px' }, 1000, function () {
+                          var i = ($('#place').offset().left - 440) / -850;
+                          if (i < 4) {
+                              $('.divBtn').eq(i).css({ 'background-position': '0 -50px' });
+                          }
+                          $('.divBtn').eq(i - 1).css({ 'background-position': '0 0' });
+                          flag = true;
+                      });
+                  }
+
+              });
+              $('.searchtext').focus();
+              for (var i = 0; i < $('#block2 img').length; i++) {
+                  $('#block2 img').eq(i).attr('src', 'images/animal/seezoo' + i + '.jpg');
+              }
+              setInterval(function () {
+                  var index = Math.floor(Math.random() * 9);
+                  $('#block2 img').eq(index).animate({ width: '0' }, 2000, function () {
+                      var obj = $('#block2 img').eq(index);
+                      if (obj.attr('src') == 'images/animal/seezoo' + index + '.jpg') {
+                          obj.attr('src', 'images/animal/seezoo' + index + '_1.jpg').animate({ width: '100%' }, 2000);
+                      }
+                      else {
+                          obj.attr('src', 'images/animal/seezoo' + index + '.jpg').animate({ width: '100%' }, 2000);
+                      }
+
+                  });
+              }, 4000);
+              if (Brows.opera || document.getElementById('place').style['backgroundSize'] == undefined) {
+                  //如果是欧朋或低版本浏览器，运行幻灯片特效
+                  var jsonUl = { width: 710 + 'px', height: 7 * 390 + 'px', position: 'absolute' };
+                  var jsonLi = { listStyle: 'none', float: 'left', width: '710px', height: '390px' };
+                  var jsonA = { display: 'block', width: '100%', height: '100%' };
+                  document.getElementById('flex_place').style['overflow'] = 'hidden';
+                  createSlideFrame(document.getElementById('flex_place'), 7, jsonUl, jsonLi, jsonA);
+              }
+              else {
+                  var oDivFlex = document.getElementById('flex');
+                  oDivFlex.style.width = '710px';
+                  oDivFlex.style.height = '390px';
+                  createFlexFrame(oDivFlex, jsonF, jsonS, jsonIA, 'images/wildzoo0.jpg');
+              }
+          }
+          init();
+          function ulmove() {
+              if ($('#flex_place ul').css('top') == '-2340px') {
+                  $('#flex_place ul').css({ 'top': '0' });
+              }
+              $('#flex_place ul').animate({ top: '-=390px' }, 2000, function () {
+                  if ($('#flex_place ul').css('top') == '-2340px') {
+                      $('#flex_place ul').css({ 'top': '0' });
+                  }
+              });
+          }
+          $(document).ready(function () {
+              //第一版面
+              $('.searchtext').keydown(function (event) {
+                  if ($(this).css('color') == 'gray') {
+                      $(this).val('');
+                      $(this).addClass('fontblack');
+                  }
+              });
+              $('#moveBlock').bind('mousemove', function () { cubeFadeout(); });
+              for (var i = 0; i < $('.quteCube').length; i++) {
+                  $('.quteCube').eq(i).attr('divindex', i);
+              }
+              $('.quteCube').each(function () {
+                  $(this).mouseover(function () {
+                      $('#moveBlock').addClass('displaynone');
+                      clearInterval(Timer);
+                      $(this).stop(true).fadeTo('fast', 0.5);
+                      for (var i = 0; i < $('.quteCube').length; i++) {
+                          if (i != $(this).attr('divindex'))
+                              $('.quteCube').eq(i).stop(true).fadeTo('fast', 0);
+                      }
+                      var j = parseInt($(this).attr('divindex'));
+                      $('.qutoText').stop(true).eq(j).fadeTo('fast', 0.5);
+                  });
+                  $(this).mouseout(function () {
+
+                      var j = parseInt($(this).attr('divindex'));
+                      $('.qutoText').eq(j).fadeTo('fast', 0);
+                      $('#moveBlock').removeClass('displaynone');
+                  });
+
+              });
+              //第三版面------------------------------------------
+              if (Brows.opera || document.getElementById('place').style['backgroundSize'] == undefined) {
+                  //如果是欧朋或低版本浏览器，运行幻灯片特效
+                  var timer = setInterval(function () { ulmove(); }, 2100);
+                  var oDiv = document.getElementById('flex_place');
+                  var oDivNext = document.getElementById('next');
+                  var oDivLast = document.getElementById('last');
+                  oDivNext.onmousemove = oDivLast.onmousemove = oDiv.onmousemove = function () {
+                      $('#flex_place ul').stop(true, true);
+                      clearInterval(timer);
+                      $('#next').stop(true, true).animate({ width: '80px' }, 1000);
+                      $('#last').stop(true, true).animate({ width: '80px' }, 1000);
+                  };
+                  oDiv.onmouseout = function () {
+                      $('#next').stop(true, true).animate({ width: '0' }, 1000);
+                      $('#last').stop(true, true).animate({ width: '0' }, 1000);
+                      timer = setInterval(function () { ulmove(); }, 2100);
+                  };
+                  $('#next').click(function () {
+                      if ($('#flex_place ul').css('top') == '-2340px') {
+                          $('#flex_place ul').css({ 'top': '-390px' });
+                      }
+                      else {
+                          $('#flex_place ul').css({ 'top': '-=390px' });
+                      }
+                  });
+                  $('#last').click(function () {
+                      if ($('#flex_place ul').css('top') == '0px') {
+                          $('#flex_place ul').css({ 'top': '-1950px' });
+                      }
+                      else {
+                          $('#flex_place ul').css({ 'top': '+=390px' });
+                      }
+                  });
+              }
+              else {
+                  var oDivF = document.getElementById('flex_place');
+                  var oDiv = document.getElementById('flex');
+                  $('#next').css({ 'display': 'none' });
+                  $('#last').css({ 'display': 'none' });
+                  $('#btnUl li').css({'box-shadow':'5px 5px 5px #000000'});
+                  flexF = { width: '1420px', height: '780px', left: '-355px', top: '-195px' };
+                  flexS = { width: '283px', height: '259px', 'backgroundSize': '1420px 780px', opacity: 0 };
+                  var timer = setInterval(function () { flexDiv(oDiv, flexF, flexS); }, 3000);
+
+              }
+          });
+          function flexDiv(obj,flexF,flexS) {
+              var oA = obj.getElementsByTagName('a')[0];
+              var oDivS = obj.getElementsByTagName('div')[0];
+              div_flex(oDivS, flexF, flexS, function () {
+                  obj.removeChild(oA);
+                  setTimeout(function () {
+                      obj.removeChild(oDivS);
+                      if (imgIndex == 6) { imgIndex = 0; }
+                      createFlexFrame(obj, jsonF, jsonS, jsonIA, 'images/wildzoo' + imgIndex + '.jpg');
+                      imgIndex++;
+                  }, 1000)
+              });
+          }
+          function cubeFadeout() {
+              clearInterval(Timer);
+              $('.quteCube').fadeTo('fast', 0.5);
+              Timer = setInterval(function () { $('.quteCube').stop(true, true).fadeTo('fast', 0); }, 1000);
+              return false;
+          }
+          function createSlideFrame(obj,liNum,jsonUl,jsonLi,jsonA){
+              var oUl = document.createElement('ul');
+              for (var item in jsonUl) {
+                  oUl.style[item] = jsonUl[item];
+              }
+            for(var i=0;i<liNum;i++){
+                var oLi = document.createElement('li');
+                for (var item in jsonLi) {
+                    oLi.style[item] = jsonLi[item];
+                }
+                if (i == 6) {
+                    i = 0;
+                    oLi.style['background'] = "url('images/wildzoo" + i + ".jpg')";
+                    i = 6;
+                }
+                else {
+                    oLi.style['background'] = "url('images/wildzoo" + i + ".jpg')";
+                }
+                var oA = document.createElement('a');
+                for (var item in jsonA) {
+                    oA.style[item] = jsonA[item];
+                    oA.href = "#";
+                }
+               oLi.appendChild(oA);
+               oUl.appendChild(oLi);
+            }
+            obj.appendChild(oUl);
+          }
+          function createFlexFrame(obj, jsonF, jsonS, jsonA,imgUrl) {
+              var oDiv = document.createElement('div');
+              for (var item in jsonF) {
+                  oDiv.style[item] = jsonF[item];
+              }
+              for (var i = 0; i < 15; i++) {
+                  var oDivsmall = document.createElement('div');
+                  for (var item in jsonS) {
+                      oDivsmall.style[item] = jsonS[item];
+                  }
+                  oDivsmall.style['background'] = "url('" + imgUrl + "')";
+                  oDivsmall.style['backgroundSize'] = '710px 390px';
+                  oDivsmall.style['backgroundPosition'] = -(i % 5) * 142 + 'px ' + (-(Math.floor(i / 5) * 130)) + 'px';
+                  oDiv.appendChild(oDivsmall);
+              }
+              var oA = document.createElement('a');
+              for (var item in jsonA) {
+                  oA.style[item] = jsonA[item];
+                  oA.href = "#";
+              }
+              var oImage = new Image();
+              oImage.src = imgUrl;
+              oA.appendChild(oImage);
+              obj.appendChild(oDiv);
+              obj.appendChild(oA);
+              
+          }
+          function div_flex(obj, jsonF, jsonS, callback) {
+              var oDiv = obj.getElementsByTagName('div');
+              for (var item in jsonF) {
+                  obj.style[item] = jsonF[item];
+              }
+              for (var i = 0; i < oDiv.length; i++) {
+                  for (var item in jsonS) {
+                      oDiv[i].style[item] = jsonS[item];
+                  }
+                  if (arr[i % 5] > 0) {
+                      var k = arr[i % 5] + Math.random();
+                  }
+                  else {
+                      var k = arr[i % 5] - Math.random();
+                  }
+                  var str = 'rotate(' + (k * 34) + 'deg) rotateY(' + (k * 216) + 'deg) rotateX(' + ((Math.random() + 4) * 85 * arr2[Math.floor(i / 5)]) + 'deg)';
+                  if (Brows.firefox) {
+                      oDiv[i].style['transform'] = str;
+                  } else {
+                      oDiv[i].style['-webkit-transform'] = str;
+                  }
+                  oDiv[i].style['backgroundPosition'] = -(i % 5) * 200 + 'px ' + (-Math.floor(i / 5) * 200) + 'px';
+
+              }
+              if (callback)
+                  callback();
+          }
+      </script>
+    </div>
+</body>
+</html>
